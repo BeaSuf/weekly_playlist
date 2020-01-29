@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+  <link rel='stylesheet' href='/stylesheets/main.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <% if logged_in? %>
+      <%= current_user['email'] %>
+
+      <form class="right" action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>LOG OUT</button>
+      </form>
+    <% else %>
+      <a class="right" href="/login">LOG IN</a>
+      <a class="right" href="/sign_up">SIGN UP</a>
+    <% end %>
+
+  <nav>
+    <a class="left" href="/playlists">VOTE</a>
+    <a class="left" href="/">SEARCH</a>
+  </nav>
+
+  <%= yield %>
+
+</body>
+</html>

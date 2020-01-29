@@ -27,20 +27,25 @@ CREATE TABLE songs (
     link VARCHAR(255),
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE 
- );
+);
 
- CREATE TABLE votes (
+ALTER TABLE songs ADD COLUMN cover VARCHAR(255);
+ALTER TABLE songs ALTER COLUMN cover TYPE VARCHAR(500);
+ALTER TABLE songs ALTER COLUMN link TYPE VARCHAR(500);
+ALTER TABLE songs ALTER COLUMN preview TYPE VARCHAR(500);
+
+CREATE TABLE votes (
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     song_id INTEGER NOT NULL,
     FOREIGN KEY (song_id) REFERENCES songs (id) ON DELETE CASCADE
- );
+);
 
- CREATE TABLE playlists (
-     id SERIAL PRIMARY KEY,
-     name VARCHAR(255) NOT NULL,
-     create_date TIMESTAMPTZ NOT NULL
- );
+CREATE TABLE playlists (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    create_date TIMESTAMPTZ NOT NULL
+);
 
 CREATE TABLE playlists_songs (
     playlist_id INTEGER NOT NULL,

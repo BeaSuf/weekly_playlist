@@ -1,10 +1,10 @@
-def create_song(title, artist, album, preview, link, user_id)
+def create_song(title, artist, album, preview, link, user_id, cover)
     sql = <<~SQL      
-        INSERT INTO songs (title, artist, album, preview, link, user_id)
-        VALUES ($1, $2, $3, $4, $5, $6);
+        INSERT INTO songs (title, artist, album, preview, link, user_id, cover)
+        VALUES ($1, $2, $3, $4, $5, $6, $7);
     SQL
 
-    run_sql(sql, [title, artist, album, preview, link, user_id])
+    run_sql(sql, [title, artist, album, preview, link, user_id, cover])
 end
 
 # read
