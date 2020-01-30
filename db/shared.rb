@@ -1,7 +1,7 @@
 require 'pg'
 
 def run_sql(sql, args = [])
-    conn = PG.connect(dbname: 'weekly_playlists')
+    conn = PG.connect(ENV['DATABASE_URL'] || {dbname: 'weekly_playlists'})
     results = conn.exec_params(sql, args)
     conn.close
 
