@@ -26,16 +26,19 @@
                 <button>BACK TO SEARCH RESULTS</button>
             </form> -->
             <a class="link-as-btn" href="/songs?title=<%= @song_data[:search_term] %>">BACK TO SEARCH RESULTS</a>
-            
-            <form action="/song" method="post">
-                <input type="hidden" name="title" value=<%= @song_data[:title] %>>
-                <input type="hidden" name="artist_name" value=<%= @song_data[:artist_name] %>>
-                <input type="hidden" name="album_title" value=<%= @song_data[:album_title] %>>
-                <input type="hidden" name="cover" value=<%= @song_data[:cover] %>>
-                <input type="hidden" name="preview" value=<%= @song_data[:preview] %>>
-                <input type="hidden" name="link" value=<%= @song_data[:link] %>>
-                <button>ADD TO WEEKLY SONGS LIST</button>
-            </form>
+            <% if @in_list %>
+                <p>This song is already in the list, you can <a href='/vote?song_id=<%= @in_list["id"] %>'>vote</a> for it</p>
+            <% else %>
+                <form action="/song" method="post">
+                    <input type="hidden" name="title" value="<%= @song_data[:title] %>">
+                    <input type="hidden" name="artist_name" value="<%= @song_data[:artist_name] %>">
+                    <input type="hidden" name="album_title" value="<%= @song_data[:album_title] %>">
+                    <input type="hidden" name="cover" value="<%= @song_data[:cover] %>">
+                    <input type="hidden" name="preview" value="<%= @song_data[:preview] %>">
+                    <input type="hidden" name="link" value="<%= @song_data[:link] %>">
+                    <button>ADD TO WEEKLY SONGS LIST</button>
+                </form>
+            <% end %>
         </article>
     </section>
 </div>

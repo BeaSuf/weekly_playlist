@@ -1,11 +1,11 @@
 <ul class="search-items">
-    <%@songs_data.each do |track|%>
-        <li class="item-container">
+    <% @songs_data.each do |track| %>
+        <li class="song-item-container">
             <div class="img-container">
                 <img class="search-img" src='<%= track[:cover] %>' alt="" srcset="">
-                <a href='/song_details?search_term=<%= track[:search_term] %>&title=<%= track[:title] %>&artist_name=<%= track[:artist_name] %>&album_title=<%= track[:album_title] %>&cover=<%= track[:cover] %>&preview=<%= track[:preview] %>&link=<%= track[:link] %>'><%="#{track[:title]}"%></a>
+                <a href='/song_details?search_term=<%= track[:search_term] %>&title=<%= track[:title] %>&artist_name=<%= track[:artist_name] %>&album_title=<%= track[:album_title] %>&cover=<%= track[:cover] %>&preview=<%= track[:preview] %>&link=<%= track[:link] %>'><%= "#{track[:title]}" %></a>
             </div>
         </li>
-    <%end%>
+    <% end %>
 </ul>
 

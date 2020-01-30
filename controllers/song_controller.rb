@@ -56,8 +56,9 @@ get '/song_details' do
         link: params['link'] 
     }
 
-    erb :"songs/song_details"
+    @in_list = find_song_by_title_and_artist(@song_data[:title], @song_data[:artist_name])
     # binding.pry
+    erb :"songs/song_details"
 end
 
 # create
@@ -71,9 +72,6 @@ post '/song' do
     preview = params['preview']
     link = params['link'] 
 
-    # raise "#{title} #{artist_name} #{album_title} #{cover} #{preview} #{link}"
-    # raise current_user.inspect
-  
     create_song(title, artist_name, album_title, preview, link, current_user["id"], cover)
     #currently not interested in the results because it's insert
     

@@ -14,15 +14,16 @@
         <input type="hidden" name="_method" value="delete">
         <button>LOG OUT</button>
       </form>
+      
+      <nav>
+        <a class="left" href="/votes">VOTE</a>
+        <a class="left" href="/">SEARCH</a>
+      </nav>
     <% else %>
       <a class="right" href="/login">LOG IN</a>
       <a class="right" href="/sign_up">SIGN UP</a>
     <% end %>
 
-  <nav>
-    <a class="left" href="/playlists">VOTE</a>
-    <a class="left" href="/">SEARCH</a>
-  </nav>
 
   <%= yield %>
 
