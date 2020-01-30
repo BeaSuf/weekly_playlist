@@ -20,9 +20,9 @@ def all_weekly_songs
   run_sql(sql)
 end
 
-def find_one_song(column, value)
-  sql = "SELECT * FROM songs WHERE #{column} = $1;"
-  run_sql(sql, [value]).first
+def find_user_songs(user_id)
+  sql = "SELECT * FROM songs WHERE user_id = $1;"
+  run_sql(sql, [user_id])
 end
 
 def find_song_by_title_and_artist(title, artist_name)

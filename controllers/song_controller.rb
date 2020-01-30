@@ -95,7 +95,7 @@ get '/songs/:id/edit' do
   
     id = params[:id]
   
-    @song =  find_one_song("id", id)
+    # @song =  find_one_song("id", id)
 
     erb :edit_song
 end

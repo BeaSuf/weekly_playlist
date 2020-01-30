@@ -4,10 +4,13 @@ get '/votes' do
     # all_songs (not archived)
     @songs_data = all_weekly_songs()
 
+    #get user's songs, user should not be able to vote for them
+    owned_songs = find_user_songs(current_user["id"])
+    @owned_songs_ids = owned_songs.map{ |record| record["id"] }
+  
     # get the voted songs of the current user
-
-    voted = find_voted_songs(current_user["id"])
-    @voted_songs_ids = voted.map{ |record| record["song_id"] }
+    voted_songs = find_voted_songs(current_user["id"])
+    @voted_songs_ids = voted_songs.map{ |record| record["song_id"] }
    
     erb :"votes/votes_list"
 end

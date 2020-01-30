@@ -2,14 +2,16 @@
     <% @songs_data.each do |track| %>
         <li class="votes-item-container">
             <div class="img-container">
+                <h3><%= track["title"] %></h3>
                 <img class="search-img" src='<%= track["cover"] %>' alt="" srcset="">
-                <!-- <% if logged_in? %> -->
-                    <% if(@voted_songs_ids.include? track["id"])%>
+
+                <% if !@owned_songs_ids.include? track["id"] %>
+                    <% if @voted_songs_ids.include? track["id"] %>
                         <a href='/un_vote/<%= track["id"] %>'>!!liked!!</a>
                     <% else %>
                         <a href='/vote/<%= track["id"] %>'>like</a>
                     <% end %>
-                <!-- <% end %> -->
+                <% end %>
             </div>
         </li>
     <% end %>

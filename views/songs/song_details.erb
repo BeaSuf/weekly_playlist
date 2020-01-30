@@ -27,7 +27,7 @@
             </form> -->
             <a class="link-as-btn" href="/songs?title=<%= @song_data[:search_term] %>">BACK TO SEARCH RESULTS</a>
             <% if @in_list %>
-                <p>This song is already in the list, you can <a href='/vote?song_id=<%= @in_list["id"] %>'>vote</a> for it</p>
+                <p>This song is already in the list, you can <a href='/vote/<%= @in_list["id"] %>'>vote</a> for it</p>
             <% else %>
                 <form action="/song" method="post">
                     <input type="hidden" name="title" value="<%= @song_data[:title] %>">
