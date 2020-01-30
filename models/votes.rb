@@ -14,6 +14,12 @@ def all_votes
   run_sql(sql)
 end
 
+def get_song_votes_count(song_id)
+  sql = "SELECT count(#{song_id}) FROM votes;"
+  # implicit return
+  run_sql(sql)
+end
+
 def find_one_vote(user_id, song_id)
   sql = "SELECT * FROM votes WHERE user_id = $1 AND song_id = $2;"
   run_sql(sql, [user_id, song_id]).first

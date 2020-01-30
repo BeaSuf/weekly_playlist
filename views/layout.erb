@@ -18,6 +18,10 @@
       <nav>
         <a class="left" href="/votes">VOTE</a>
         <a class="left" href="/">SEARCH</a>
+
+        <% if current_user['admin'] %>
+          <a class="left" href="/playlists_songs">PLAYLIST</a>          
+        <% end %>
       </nav>
     <% else %>
       <a class="right" href="/login">LOG IN</a>

@@ -21,15 +21,16 @@
             <p class="out-of"><%= @song_data[:cached] %></p>      
         <% end %> -->
         <article class="back-to-search-results">
-            <!-- <form action="/songs" method="get">
-                <input type="hidden" name="title" value=<%= @song_data[:search_term] %>>
-                <button>BACK TO SEARCH RESULTS</button>
-            </form> -->
-            <a class="link-as-btn" href="/songs?title=<%= @song_data[:search_term] %>">BACK TO SEARCH RESULTS</a>
+            <a class="link-as-btn" href="/songs?search_term=<%= @song_data[:search_term] %>">BACK TO SEARCH RESULTS</a>
             <% if @in_list %>
-                <p>This song is already in the list, you can <a href='/vote/<%= @in_list["id"] %>'>vote</a> for it</p>
+                <p>This song is already in the list.
+                    <% if !@own_song && !@voted %>
+                        Would you like to <a href='/vote/<%= @in_list["id"] %>'>vote</a> for it?
+                    <% end %>
+                </p>
             <% else %>
                 <form action="/song" method="post">
+                    <input type="hidden" name="search_term" value="<%= @song_data[:search_term] %>">
                     <input type="hidden" name="title" value="<%= @song_data[:title] %>">
                     <input type="hidden" name="artist_name" value="<%= @song_data[:artist_name] %>">
                     <input type="hidden" name="album_title" value="<%= @song_data[:album_title] %>">

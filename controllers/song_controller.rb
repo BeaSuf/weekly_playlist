@@ -2,7 +2,7 @@ require 'httparty'
 
 # find matched songs
 get '/songs' do
-    title = params[:title]
+    search_term = params[:search_term]
     # binding.pry
 
     headers = {
@@ -10,7 +10,7 @@ get '/songs' do
         'x-rapidapi-key': '8c542d09c5msh4176cc948383ec9p1eef53jsn8825cd8975d8'
     }
 
-    url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=#{title}"
+    url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=#{search_term}"
     
     deezer_json = HTTParty.get(url, {
         headers: headers, 
@@ -23,7 +23,7 @@ get '/songs' do
         @songs_data = []
         search_data.each do |track|
             @songs_data << { 
-                search_term: title,
+                search_term: search_term,
                 title: track['title'],
                 artist_name: track['artist']["name"],
                 album_title: track['album']['title'],
@@ -56,8 +56,12 @@ get '/song_details' do
         link: params['link'] 
     }
 
+    # check if the song already in the list
     @in_list = find_song_by_title_and_artist(@song_data[:title], @song_data[:artist_name])
-    # binding.pry
+    @own_song = @in_list["user_id"] == current_user["id"]
+
+    @voted = voted_songs.include? @in_list["id"]
+    
     erb :"songs/song_details"
 end
 
@@ -65,6 +69,7 @@ end
 post '/song' do
     redirect '/login' unless logged_in?
   
+    search_term = params[:search_term]
     title = params['title']
     artist_name = params['artist_name']
     album_title = params['album_title']
@@ -75,7 +80,7 @@ post '/song' do
     create_song(title, artist_name, album_title, preview, link, current_user["id"], cover)
     #currently not interested in the results because it's insert
     
-    redirect '/'
+    redirect "/songs?search_term=#{search_term}"
 end
 
 # delete

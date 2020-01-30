@@ -1,3 +1,9 @@
+def voted_songs
+    # get the voted songs of the current user
+    voted_songs = find_voted_songs(current_user["id"])
+    voted_songs.map{ |record| record["song_id"] }
+end
+
 get '/votes' do
     redirect '/login' unless logged_in?
 
@@ -8,9 +14,7 @@ get '/votes' do
     owned_songs = find_user_songs(current_user["id"])
     @owned_songs_ids = owned_songs.map{ |record| record["id"] }
   
-    # get the voted songs of the current user
-    voted_songs = find_voted_songs(current_user["id"])
-    @voted_songs_ids = voted_songs.map{ |record| record["song_id"] }
+    @voted_songs_ids = voted_songs
    
     erb :"votes/votes_list"
 end
