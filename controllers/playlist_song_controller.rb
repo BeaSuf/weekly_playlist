@@ -14,7 +14,7 @@ end
 # save to db
 post '/playlist_songs' do
     params.each do |param|
-        # binding.prys
+       
         # create_playlist_song(playlist_ids, song_ids)
         create_playlist_song(param[1], param[0])
     end

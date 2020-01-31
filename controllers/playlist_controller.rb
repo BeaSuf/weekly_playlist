@@ -1,12 +1,12 @@
 # show form to create the playlist
 get '/playlist/new' do
     prev_playlists = get_active_playlists
-    # binding.pry
+   
     @name = prev_playlists && prev_playlists.count != 0 ? prev_playlists["name"] : nil
     @id = prev_playlists && prev_playlists.count != 0 ? prev_playlists["id"] : nil
 
     @songs = all_weekly_songs
-    
+
     erb :"playlists/new_playlist"
 end
 
@@ -15,7 +15,7 @@ post '/playlist/archive' do
     @id = params[:id]
     
     songs_in_playlist = get_active_playlist_songs
-    binding.pry
+    
     # archive the song
     songs_in_playlist.each do |track|
         update_song("archived", true, "id", track["id"])

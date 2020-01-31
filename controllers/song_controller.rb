@@ -3,8 +3,7 @@ require 'httparty'
 # find matched songs
 get '/songs' do
     search_term = params[:search_term]
-    # binding.pry
-
+    
     headers = {
         'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
         'x-rapidapi-key': '8c542d09c5msh4176cc948383ec9p1eef53jsn8825cd8975d8'
