@@ -7,26 +7,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <% if logged_in? %>
-      <%= current_user['email'] %>
+  <% if logged_in? %>
 
-      <form class="right" action="/session" method="post">
+    <div class="log-in">
+      <p><%= current_user['email'] %></p>
+
+      <form action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
-        <button>LOG OUT</button>
-      </form>
-      
-      <nav>
-        <a class="left" href="/votes">VOTE</a>
-        <a class="left" href="/">SEARCH</a>
+        <button class="button">LOG OUT</button>
+      </form>      
+    </div>
 
-        <% if current_user['admin'] %>
-          <a class="left" href="/playlists_songs">PLAYLIST</a>          
-        <% end %>
-      </nav>
-    <% else %>
-      <a class="right" href="/login">LOG IN</a>
-      <a class="right" href="/sign_up">SIGN UP</a>
-    <% end %>
+    <nav>
+      <a class="left" href="/votes">VOTE</a>
+      <a class="left" href="/">SEARCH</a>
+
+      <% if current_user['admin'] == 't' %>
+        <a class="left" href="/playlist/new">PREPARE WEEKLY PLAYLIST</a>          
+        <a class="left" href="/playlist">SHOW PLAYLIST</a>          
+      <% end %>
+    </nav>
+
+  <% else %>
+  
+    <div class="log-in">
+      <a class="link-as-btn" href="/login">LOG IN</a>
+      <a class="link-as-btn" href="/sign_up">SIGN UP</a>
+    </div>
+
+  <% end %>
 
 
   <%= yield %>

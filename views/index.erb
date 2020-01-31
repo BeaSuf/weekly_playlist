@@ -1,6 +1,8 @@
-<h1>SONGS</h1>
-<%=@error%>
-<form action="/songs" method="get">
-    <input type="text" name="search_term" id="">
-    <button type="submit">SEARCH</button>
-</form>
+<div class="form-container">
+    <h1>SONGS</h1>
+    <%=@error%>
+    <form class="form" action="/songs" method="get">
+        <input type="text" name="search_term" id="">
+        <button class="button" type="submit">SEARCH</button>
+    </form>
+</div>

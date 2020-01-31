@@ -26,7 +26,7 @@ def find_user_songs(user_id)
 end
 
 def find_song_by_title_and_artist(title, artist_name)
-  sql = "SELECT * FROM songs WHERE title ILIKE $1 AND artist ILIKE $2;"
+  sql = "SELECT * FROM songs WHERE title ILIKE $1 AND artist ILIKE $2 AND archived = false;"
   run_sql(sql, [title, artist_name]).first
 end
 

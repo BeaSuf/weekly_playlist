@@ -9,6 +9,8 @@ get '/votes' do
 
     # all_songs (not archived)
     @songs_data = all_weekly_songs()
+    @no_results = @songs_data.count == 0 ? "NO SONGS SELECTED" : ""
+
 
     #get user's songs, user should not be able to vote for them
     owned_songs = find_user_songs(current_user["id"])

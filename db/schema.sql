@@ -44,12 +44,16 @@ CREATE TABLE votes (
 );
 
 ALTER TABLE votes ADD UNIQUE (user_id, song_id);
+ALTER TABLE votes ADD COLUMN archived BOOLEAN;
+
 
 CREATE TABLE playlists (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     create_date TIMESTAMPTZ NOT NULL
 );
+ALTER TABLE playlists ADD COLUMN archived BOOLEAN;
+
 
 CREATE TABLE playlists_songs (
     playlist_id INTEGER NOT NULL,
@@ -59,3 +63,4 @@ CREATE TABLE playlists_songs (
 );
 
 ALTER TABLE playlists_songs ADD UNIQUE (playlist_id, song_id);
+ALTER TABLE playlists_songs ADD COLUMN archived BOOLEAN;

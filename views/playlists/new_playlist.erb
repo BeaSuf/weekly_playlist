@@ -1,0 +1,15 @@
+<div class="form-container">  
+    <% if @name && @songs.count > 0%>   
+        <form class="form" action="/playlist/archive" method="post">
+            <input type="hidden" name="id" value='<%= @id %>'>
+            <h3><%= @name %></h3>
+            <button class="link-as-btn">ARCHIVE PLAYLIST</button>
+        </form>
+    <%else%>
+        <form class="form" action="/playlist" method="post">
+            <label for="">NAME</label>
+            <input type="text" name="name">
+            <button class="link-as-btn">CREATE PLAYLIST</button>
+        </form>
+    <%end%>
+</div>

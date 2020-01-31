@@ -14,9 +14,11 @@ def all_votes
   run_sql(sql)
 end
 
-def get_song_votes_count(song_id)
-  sql = "SELECT count(#{song_id}) FROM votes;"
-  # implicit return
+def get_song_votes_count 
+  sql = <<~SQL  
+    SELECT id, title, artist, album, preview, link, cover, archived, songs.user_id AS user_song, count(*) AS votes_count 
+    FROM songs, votes WHERE id = song_id AND archived = false GROUP BY songs.id;
+  SQL
   run_sql(sql)
 end
 

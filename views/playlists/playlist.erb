@@ -1,0 +1,16 @@
+<ul class="search-items">
+    <%= @no_results %>
+    <% @songs_data.each do |track| %>
+        <li class="song-item-container">
+            <div class="img-container">
+                <img src='<%= track["cover"] %>' alt="" srcset="">
+            </div>
+            <video class="preview" controls="" autoplay="" name="media">
+                <source src='<%= track["preview"] %>' type="audio/mpeg">
+            </video>            
+            <p><span class="credentials">Artist Name: </span><%= track["artist"] %></p>
+            <p><span class="credentials">Album Title: </span><%= track["album"] %></p>
+            <p><span class="credentials">Link: </span><%= track["link"] %></p>
+        </li>
+    <% end %>
+</ul>

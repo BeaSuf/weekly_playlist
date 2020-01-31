@@ -58,9 +58,9 @@ get '/song_details' do
 
     # check if the song already in the list
     @in_list = find_song_by_title_and_artist(@song_data[:title], @song_data[:artist_name])
-    @own_song = @in_list["user_id"] == current_user["id"]
-
-    @voted = voted_songs.include? @in_list["id"]
+   
+    @own_song = !@in_list ? false : @in_list["user_id"] == current_user["id"]
+    @voted = !@in_list ? false : voted_songs.include?(@in_list["id"])
     
     erb :"songs/song_details"
 end

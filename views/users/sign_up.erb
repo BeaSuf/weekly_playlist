@@ -1,6 +1,11 @@
-<form action="/sign_up" method="post">
-    <input type="text" name="email" value=<%=@email%>>
-    <input type="password" name="password" id="">
-    <input type="password" name="repeat_password" id="">
-    <button type="submit">SIGN UP</button>
-</form>
+<div class="form-container">
+    <form class="form" action="/sign_up" method="post">
+        <label for="">EMAIL</label>
+        <input type="text" name="email" value=<%=@email%>>
+        <label for="">PASSWORD</label>
+        <input type="password" name="password" id="">
+        <label for="">REPEAT PASSWORD</label>
+        <input type="password" name="repeat_password" id="">
+        <button class="link-as-btn" type="submit">SIGN UP</button>
+    </form>
+</div>

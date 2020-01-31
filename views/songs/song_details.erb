@@ -3,23 +3,19 @@
         <article>
             <img src="<%= @song_data[:cover] %>" alt="" srcset="">
         </article>
+        <video class="preview" controls="" autoplay="" name="media">
+            <source src="<%= @song_data[:preview] %>" type="audio/mpeg">
+        </video>            
     </section>
     <section class="details">
         <article class="title">
             <h1><%= @song_data[:title] %></h1>            
         </article>
         <article class="plot">
-            <video controls="" autoplay="" name="media">
-                <source src="<%= @song_data[:preview] %>" type="audio/mpeg">
-                </video>
-            <p><%= @song_data[:preview] %></p>
-            <p><span class="credentials">artist_name: </span><%= @song_data[:artist_name] %></p>
-            <p><span class="credentials">album_title: </span><%= @song_data[:album_title] %></p>
-            <p><span class="credentials">link: </span><%= @song_data[:link] %></p>
+            <p><span class="credentials">Artist Name: </span><%= @song_data[:artist_name] %></p>
+            <p><span class="credentials">Album Title: </span><%= @song_data[:album_title] %></p>
+            <p><span class="credentials">Link: </span><%= @song_data[:link] %></p>
         </article>  
-        <!-- <% if @song_data[:cached] %>
-            <p class="out-of"><%= @song_data[:cached] %></p>      
-        <% end %> -->
         <article class="back-to-search-results">
             <a class="link-as-btn" href="/songs?search_term=<%= @song_data[:search_term] %>">BACK TO SEARCH RESULTS</a>
             <% if @in_list %>
@@ -37,7 +33,7 @@
                     <input type="hidden" name="cover" value="<%= @song_data[:cover] %>">
                     <input type="hidden" name="preview" value="<%= @song_data[:preview] %>">
                     <input type="hidden" name="link" value="<%= @song_data[:link] %>">
-                    <button>ADD TO WEEKLY SONGS LIST</button>
+                    <button class="button">ADD TO WEEKLY SONGS LIST</button>
                 </form>
             <% end %>
         </article>

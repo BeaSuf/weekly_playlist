@@ -1,0 +1,19 @@
+<div class="song-votes-container">
+    <form class="votes-form-container" action="/playlist_songs" method="post">
+        <h2><%= @name %></h2>
+        <%= @no_results %>
+        <% if @no_results.length == 0 %>
+            <div class="song_votes">
+                <% @songs_data.each do |track, idx| %>
+                    <div class="img-container">
+                        <img class="search-img" src='<%= track["cover"] %>' alt="" srcset="">
+                    </div>
+                    <input class="checkbox" type="checkbox" name='<%= track["id"] %>' value='<%= @playlist_id %>'>
+                    <span class="vote-count"><%= track["votes_count"] %></span>
+                <% end %>
+            </div>
+            <button class="link-as-btn">CREATE PLAYLIST</button>
+        <% end %>
+    </form>
+</div>
+

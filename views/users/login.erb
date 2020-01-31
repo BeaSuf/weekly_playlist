@@ -1,7 +1,11 @@
-<%= @error %>
-<form action="/login" method="post">
-    <input type="text" name="email" id="">
-    <input type="password" name="password" id="">
-    <a href="/forgot_password">Forgot Password?</a>
-    <button type="submit">LOG IN</button>
-</form>
+<div class="form-container">
+    <%= @error %>
+    <form class="form" action="/login" method="post">
+        <label for="">EMAIL</label>
+        <input type="text" name="email" id="">
+        <label for="">PASSWORD</label>
+        <input type="password" name="password" id="">
+        <a href="/forgot_password">Forgot Password?</a>
+        <button class="link-as-btn" type="submit">LOG IN</button>
+    </form>
+</div>
