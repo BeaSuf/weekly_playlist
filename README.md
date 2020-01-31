@@ -74,7 +74,7 @@ Users can login and log out
 
 Deezer API
 
-### d. Session menagement
+### d. Permissions
 
 Only admin user can manage the playlists
 
